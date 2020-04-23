@@ -1,6 +1,7 @@
 // Include the constants first so that the rest of the files can access them
 #include <stdio.h>
 #include <math.h>
+#include <stdlib.h>
 #include "constants.h"
 #include "functions.h"
 
