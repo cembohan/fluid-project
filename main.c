@@ -3,9 +3,20 @@
  *
  *  Created on: 23 Nis 2020
  *      Author: Cem
+ *
+ *      the coding here is very simple.
+ *      it consists of 8 different functions in the functions.h file,
+ *      and 6 repetitive parts in main function : 2different unit systems for 3cases.
+ *      these parts generally go like:
+ *      take all the required data from the user one by one,
+ *      check if any data is invalid, e.g division by zero,
+ *      call the functions in to organize the data,
+ *      print the results as output.
+ *
+ *
  */
 
-
+// these are regular attachments for code to work
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -13,20 +24,21 @@
 
 
 int main() {
+// this regulates the input output order, we had to do this due to compiler issues.
 	setbuf(stdout, NULL);
-
-	int a;
-	int b;
-	int c;
-	double L;
-	double eps;
-	double D;
-	double rho;
-	double mu;
-	double deltaz;;
-	double g_SI = 9.81;
-	double g_FPS = 32.17;
-	double pV;
+// these are the definings of all the data we are going to use, excluding: PI (because it needs to be on functions file so that we don't ever use it here) and temproraries.
+	int a;	//case type
+	int b;	//unit type
+	int c;	//pipe material
+	double L;	//pipe length
+	double eps;	//pipe surface roughness
+	double D;	//pipe diameter
+	double rho;	//fluid density
+	double mu;	//fluid viscosity
+	double deltaz;;	//elevation difference
+	double g_SI = 9.81;	//gravitational acceleration (SI)
+	double g_FPS = 32.17;	//gravitaional acceleration (FPS)
+	double pV;	//
 	double Q;
 	double u_mean;
 	double deltaP;
@@ -37,14 +49,7 @@ int main() {
 	double psifactor = 144*32.174;
 	double gpm_SI= 0.00006309;
 	double gpm_FPS=0.002228;
-	/*
-int main(int argc, char const *argv[])
-{
- 	  printf("%f\n", Re(0.1, 2.2, 3, 1));
-  	  printf("%f\n", f(0.001, 25, 0.66));
-  	  printf("%f\n", error_func(3, 4));
-  	  printf("%f\n", PI);
-  */
+
 
 	printf("Please type which case you want to select. \nYour options are 1,2 or 3.\n");
 	//fflush( stdout );
@@ -84,8 +89,8 @@ int main(int argc, char const *argv[])
 			if (mu <= 0) {
 				throw("viscosity cannot be negative or zero");
 			}
-			printf("Type the pressure 2 in terms of Pa\n");
-			scanf("%lf", &pV);
+			printf("Type the pressure drop in terms of Pa\n");
+			scanf("%lf", &deltaP);
 			printf("Pick one the surfaces:type\n1 for Concrete \n2 for cast iron\n3 for galvanized iron\n4 for commercial steel\n5 for drawn tubing\n");
 			scanf ("%d", &c);
 			if(c == 1){
