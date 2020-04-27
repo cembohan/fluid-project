@@ -1,5 +1,5 @@
 /*
- * asd.c
+ * main.c
  *
  *  Created on: 23 Nis 2020
  *      Author: Cem
