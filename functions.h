@@ -24,7 +24,7 @@ double umean(double Q, double D)
 	return 4 * Q / PI / pow(D,2);
 }
 double umean2(double D, double fF, double rho, double L,double deltaP,double g, double deltaz){
-	return pow(D/2/fF/rho/L*(deltaP-(rho*g*deltaz)),0.5);
+	return pow(fabs(D/2/fF/rho/L*(-deltaP-(rho*g*deltaz))),0.5);
 }
 
 double RE(double D, double rho, double u_mean, double mu)
@@ -53,7 +53,16 @@ double error_func(double old_value, double new_value)
 }
 double pdrop (double fF, double rho, double u_mean, double L, double D, double g, double deltaz)
 {
-	return  ((2 * fF * rho * u_mean * u_mean * L / D ) + rho * g * deltaz)/144/32.174;
+	return  ((2 * fF * rho * u_mean * u_mean * L / D ) + rho * g * deltaz);
 }
+
+double Dfnc (double fF, double rho, double Q, double L, double deltaP, double g, double deltaz)
+{
+	return pow(32 * fF * rho * Q * Q * L / PI / PI / fabs( -deltaP - rho * g * deltaz),0.2);
+}
+
+
+
+
 
 #endif /* FUNCTION_H_ */
